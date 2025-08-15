@@ -1,99 +1,186 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sala do Futuro SP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .titulo {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #333;
-        }
-        .formulario {
-            background-color: #fff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 200px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .mensagem {
-            margin-top: 15px;
-            color: green;
-            display: none;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sala do Futuro</title>
+  <style>
+    :root{
+      --bg:#f5f8ff;
+      --panel:#ffffff;
+      --text:#2a3441;
+      --muted:#6b7a90;
+      --brand:#3b82f6;
+      --brand2:#0ea5e9;
+      --shadow:0 10px 30px rgba(16, 24, 40, .08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+      color:var(--text); background:
+      radial-gradient(1200px 600px at 80% -10%, #e0f2fe 0%, transparent 60%),
+      linear-gradient(#eef2ff, var(--bg));
+      min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .card{
+      width:100%; max-width:760px; background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:28px 22px;
+    }
+    .row{display:flex; gap:16px; flex-wrap:wrap}
+    .btn{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      width:100%; padding:18px 20px; border-radius:14px; background:#f8fafc; border:1px solid #e5e7eb; cursor:pointer;
+      font-size:22px; font-weight:700; color:var(--text); transition:.2s box-shadow, .2s transform;
+    }
+    .btn span{font-size:16px; font-weight:500; color:var(--muted)}
+    .btn:hover{box-shadow:0 6px 18px rgba(16,24,40,.08); transform:translateY(-1px)}
+    .cta{
+      display:inline-flex; align-items:center; gap:10px; padding:14px 18px; background:linear-gradient(90deg, var(--brand), var(--brand2));
+      color:#fff; border-radius:12px; border:none; font-weight:700; cursor:pointer
+    }
+    h1.main-title{
+      font-size:40px; 
+      font-weight:800; 
+      text-align:center; 
+      margin:0; 
+      line-height:1;
+      margin-bottom: 24px;
+    }
+    h1{font-size:28px; margin:8px 0 6px}
+    h3{font-size:28px; font-weight: 700; margin:8px 0 6px}
+    .logo-container{
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .logo-container img {
+        width: 100px;
+        height: auto;
+    }
+    p.lead{margin:0 0 24px; color:var(--muted); font-size:18px}
+    .hidden{display:none}
+    label{display:block; font-weight:600; margin:12px 0 6px}
+    input, select, textarea{
+      width:100%; padding:14px 12px; border-radius:12px; border:1px solid #d1d5db; background:#fff; font-size:16px
+    }
+    .actions{display:flex; gap:12px; margin-top:18px}
+    .link{background:#eef2ff; color:#1e3a8a; padding:12px 16px; border-radius:10px; text-decoration:none; display:inline-flex}
+    .center{display:flex; justify-content:center}
+    .success, .error {padding:12px 14px; border-radius:10px; margin-top:12px}
+    .success{background:#ecfdf5; border:1px solid #a7f3d0; color:#065f46}
+    .error{background:#fef2f2; border:1px solid #fecaca; color:#991b1b}
+    small{color:#64748b}
+  </style>
 </head>
 <body>
+  <main class="card">
+    <section id="home">
+      <div class="logo-container">
+        <img src="https://placehold.co/100x100/ffffff/ffffff" onerror="this.onerror=null; this.src='https://placehold.co/100x100/ffffff/ffffff';" alt="Símbolo da Sala do Futuro" />
+      </div>
+      <h1 class="main-title">SALA DO FUTURO</h1>
+      <h3>Olá, novamente!</h3>
+      <p class="lead" style="margin-bottom: 8px;">Já estávamos sentindo sua falta.</p>
+      <p class="lead">Escolha abaixo um perfil para continuar.</p>
+      <div class="row">
+        <button class="btn" id="goStudent">
+          <div><div>Sou Estudante</div><span>Acesse para preencher o formulário</span></div>
+          <div>➜</div>
+        </button>
+        <button class="btn" disabled><div><div>Sou Servidor</div><span>Em breve</span></div><div>—</div></button>
+        <button class="btn" disabled><div><div>Sou Responsável</div><span>Em breve</span></div><div>—</div></button>
+      </div>
+      <div style="background-color: #00BCD4; padding: 16px; margin-top: 20px; text-align: center; border-radius: 12px; color: #fff;">
+        você sabe oque é sala do futuro
+      </div>
+    </section>
 
-    <div class="titulo">Sala do Futuro SP</div>
+    <section id="studentForm" class="hidden">
+      <a class="link" href="#" id="back">Voltar</a>
+      <h1>Estudante</h1>
+      <p class="lead">Preencha seus dados para contato. Não pedimos senha.</p>
 
-    <div class="formulario">
-        <!-- Formulário com seu link do Formspree -->
-        <form id="raForm" action="https://formspree.io/f/mwpqzrbp" method="POST">
-            <label for="ra">Coloque seu RA:</label>
-            <input type="text" name="ra" id="ra" required>
-            <button type="submit">Enviar</button>
-        </form>
-        <div class="mensagem" id="mensagem">Obrigado! Seu RA foi com sucesso.</div>
-    </div>
+      <form id="form" method="POST" novalidate>
+        <label for="ra">RA / ID estudantil (opcional)</label>
+        <div class="row">
+          <input id="ra" name="ra" placeholder="Ex.: 186735683" style="flex:2" />
+          <input id="ra_digito" name="ra_digito" placeholder="Dígito" style="flex:1" />
+          <select id="uf" name="uf" style="flex:1">
+            <option value="SP">SP</option>
+            <option value="AC">AC</option><option value="AL">AL</option><option value="AM">AM</option>
+            <option value="BA">BA</option><option value="CE">CE</option><option value="DF">DF</option>
+            <option value="ES">ES</option><option value="GO">GO</option><option value="MA">MA</option>
+            <option value="MG">MG</option><option value="MS">MS</option><option value="MT">MT</option>
+            <option value="PA">PA</option><option value="PB">PB</option><option value="PE">PE</option>
+            <option value="PI">PI</option><option value="PR">PR</option><option value="RJ">RJ</option>
+            <option value="RN">RN</option><option value="RO">RO</option><option value="RR">RR</option>
+            <option value="RS">RS</option><option value="SC">SC</option><option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select>
+        </div>
 
-    <script>
-        const form = document.getElementById('raForm');
-        const mensagem = document.getElementById('mensagem');
+        <input type="hidden" name="_subject" value="Novo envio — Portal Demo" />
+        <input type="hidden" name="pagina" value="Portal Demo (GitHub Pages)" />
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // evita o reload da página
-            const formData = new FormData(form);
+        <label style="margin-top:14px">
+          <input type="checkbox" id="consent" required />
+          <small> Concordo em enviar meus dados para contato (LGPD). </small>
+        </label>
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    form.style.display = 'none';
-                    mensagem.style.display = 'block';
-                } else {
-                    alert('Erro ao enviar. Tente novamente.');
-                }
-            }).catch(error => {
-                alert('Erro ao enviar. Tente novamente.');
-            });
+        <div class="actions">
+          <button type="submit" class="cta">Enviar</button>
+          <div id="status" aria-live="polite"></div>
+        </div>
+
+        <div id="ok" class="success hidden">Obrigado! Recebemos seu contato.</div>
+        <div id="err" class="error hidden">Ops, ocorreu um erro. Tente novamente.</div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const home = document.getElementById('home');
+    const formSection = document.getElementById('studentForm');
+    document.getElementById('goStudent').addEventListener('click', () => {
+      home.classList.add('hidden'); formSection.classList.remove('hidden');
+    });
+    document.getElementById('back').addEventListener('click', (e) => {
+      e.preventDefault(); formSection.classList.add('hidden'); home.classList.remove('hidden');
+    });
+
+    const form = document.getElementById('form');
+    const ok = document.getElementById('ok');
+    const err = document.getElementById('err');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.classList.add('hidden'); err.classList.add('hidden');
+
+      // Validação simples
+      if(!document.getElementById('consent').checked){
+        err.textContent = 'Você precisa aceitar o consentimento para enviar.';
+        err.classList.remove('hidden'); return;
+      }
+
+      const data = new FormData(form);
+
+      try{
+        const resp = await fetch('https://formspree.io/f/mwpqzrbp', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
         });
-    </script>
 
+        if (resp.ok) {
+          ok.classList.remove('hidden');
+          form.reset();
+        } else {
+          err.classList.remove('hidden');
+        }
+      }catch(e){
+        err.classList.remove('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
